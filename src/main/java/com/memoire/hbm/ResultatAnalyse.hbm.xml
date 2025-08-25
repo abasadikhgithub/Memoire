@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ResultatAnalyse" table="resultatanalyse">
+        <id name="idResultat" type="int">
+            <column name="idresultat" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="fichier" class="Fichier" fetch="select">
+            <column name="idfichier" not-null="true" />
+        </many-to-one>
+        <many-to-one name="analyse" class="Analyse" fetch="select">
+            <column name="idacte" not-null="true" />
+        </many-to-one>
+        <property name="interpretation" type="string">
+            <column name="interpretation" length="254" />
+        </property>
+    </class>
+</hibernate-mapping>

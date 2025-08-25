@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.password">sadih221</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        
+        <!-- Mapping -->
+        <mapping resource="com/memoir/hbm/Actemedical.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Capteur.hbm.xml" />
+        <mapping resource="com/memoir/hbm/ContactPatient.hbm.xml" />
+        <mapping resource="com/memoir/hbm/DetailPrescription.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Domaine.hbm.xml" />
+        <mapping resource="com/memoir/hbm/DonneeCapteur.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Facture.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Fichier.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Laboratoire.hbm.xml" />
+        <mapping resource="com/memoir/hbm/MessageChat.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Nature.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Necessite.hbm.xml" />
+        <mapping resource="com/memoir/hbm/NecessiteDetail.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Notification.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Permission.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Prescription.hbm.xml" />
+        <mapping resource="com/memoir/hbm/RendezVous.hbm.xml" />
+        <mapping resource="com/memoir/hbm/ResultatAnalyse.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Role.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Service.hbm.xml" />
+        <mapping resource="com/memoir/hbm/ServiceStructure.hbm.xml" />
+        <mapping resource="com/memoir/hbm/SessionVideoconference.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Specialite.hbm.xml" />
+        <mapping resource="com/memoir/hbm/SpecialiteMedecin.hbm.xml" />
+        <mapping resource="com/memoir/hbm/StructureSanitaire.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Type.hbm.xml" />
+        <mapping resource="com/memoir/hbm/Utilisateur.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>

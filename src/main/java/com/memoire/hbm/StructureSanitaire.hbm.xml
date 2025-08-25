@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="StructureSanitaire" table="structuresanitaire">
+        <id name="idStructure" type="int">
+            <column name="idstructure" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="nature" class="Nature" fetch="select">
+            <column name="idnature" not-null="true" />
+        </many-to-one>
+        <many-to-one name="agentEtat" class="AgentEtat" fetch="select">
+            <column name="idutilisateur" not-null="true" />
+        </many-to-one>
+        <property name="nom" type="string">
+            <column name="nom" length="254" />
+        </property>
+        <property name="adresse" type="string">
+            <column name="adresse" length="254" />
+        </property>
+        <property name="telephone" type="long">
+            <column name="telephone" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="254" />
+        </property>
+    </class>
+</hibernate-mapping>

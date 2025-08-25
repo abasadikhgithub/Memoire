@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Prescription" table="prescription">
+        <id name="idPrescription" type="int">
+            <column name="idprescription" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="consultation" class="Consultation" fetch="select">
+            <column name="idacte" not-null="true" />
+        </many-to-one>
+        <property name="type" type="string">
+            <column name="type" length="254" />
+        </property>
+        <property name="analyse" type="string">
+            <column name="analyse" length="254" />
+        </property>
+    </class>
+</hibernate-mapping>

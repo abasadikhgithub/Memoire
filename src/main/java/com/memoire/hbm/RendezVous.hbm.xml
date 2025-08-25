@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="RendezVous" table="rendezvous">
+        <id name="idRendezVous" type="int">
+            <column name="idrendezvous" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="medecin" class="Medecin" fetch="select">
+            <column name="idutilisateur" not-null="true" />
+        </many-to-one>
+        <many-to-one name="patient" class="Patient" fetch="select">
+            <column name="pat_idutilisateur" not-null="true" />
+        </many-to-one>
+        <property name="dateHeure" type="date">
+            <column name="dateheure" />
+        </property>
+        <property name="statut" type="string">
+            <column name="statut" length="254" />
+        </property>
+        <property name="motif" type="string">
+            <column name="motif" length="254" />
+        </property>
+    </class>
+</hibernate-mapping>

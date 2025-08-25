@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Nature" table="nature">
+        <id name="idNature" type="int">
+            <column name="idnature" />
+            <generator class="assigned" />
+        </id>
+        <property name="libelle" type="string">
+            <column name="libelle" length="254" />
+        </property>
+        <property name="nombre" type="int">
+            <column name="nombre" />
+        </property>
+    </class>
+</hibernate-mapping>

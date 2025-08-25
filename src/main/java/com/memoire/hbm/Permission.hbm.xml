@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Permission" table="permission">
+        <id name="idPermission" type="int">
+            <column name="idpermission" />
+            <generator class="assigned" />
+        </id>
+        <property name="codePermission" type="int">
+            <column name="codepermission" />
+        </property>
+        <property name="nom" type="string">
+            <column name="nom" length="254" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="254" />
+        </property>
+    </class>
+</hibernate-mapping>

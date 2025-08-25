@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="DetailPrescription" table="detailprescription">
+        <id name="idDetail" type="int">
+            <column name="iddetail" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="prescription" class="Prescription" fetch="select">
+            <column name="idprescription" not-null="true" />
+        </many-to-one>
+        <property name="libelle" type="string">
+            <column name="libelle" length="254" />
+        </property>
+        <property name="produit" type="string">
+            <column name="produit" length="254" />
+        </property>
+        <property name="quantite" type="int">
+            <column name="quantite" />
+        </property>
+    </class>
+</hibernate-mapping>
