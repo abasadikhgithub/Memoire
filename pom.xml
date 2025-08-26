@@ -13,12 +13,6 @@
   
 <dependencies>
       <dependency>
-          <groupId>org.glassfish</groupId>
-          <artifactId>jakarta.faces</artifactId>
-          <version>4.0.0</version>
-      </dependency>
-
-      <dependency>
           <groupId>org.primefaces</groupId>
           <artifactId>primefaces</artifactId>
           <version>14.0.0</version>
@@ -61,6 +55,13 @@
           <version>6.1.0</version>
           <scope>provided</scope>
       </dependency>
+      
+      <!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+		<dependency>
+		    <groupId>org.mindrot</groupId>
+		    <artifactId>jbcrypt</artifactId>
+		    <version>0.4</version>
+		</dependency>
       
       <dependency>
           <groupId>junit</groupId>

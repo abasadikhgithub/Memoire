@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping>
-    <class name="Role" table="role">
-        <composite-id>
-            <key-property name="idUtilisateur" column="idutilisateur" type="int"/>
-            <key-property name="idPermission" column="idpermission" type="int"/>
-        </composite-id>
-        <property name="date" type="string">
-            <column name="date" length="254" />
-        </property>
-    </class>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.memoire.model">
+ <class name="Role" table="role">
+  <composite-id mapped="false" unsaved-value="undefined">
+   <key-property column="idutilisateur" name="idUtilisateur" type="int"/>
+   <key-property column="idpermission" name="idPermission" type="int"/>
+  </composite-id>
+  <property generated="never" lazy="false" name="date" type="string">
+   <column length="254" name="date"/>
+  </property>
+ </class>
 </hibernate-mapping>

@@ -1,22 +1,23 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping>
-    <class name="SessionVideoconference" table="sessionvideoconference">
-        <id name="idSession" type="int">
-            <column name="idSession" />
-            <generator class="assigned" />
-        </id>
-        <property name="urlSession" type="string">
-            <column name="urlsession" length="254" not-null="true" unique="true" />
-        </property>
-        <property name="heureDebut" type="date">
-            <column name="heuredebut" />
-        </property>
-        <property name="heureFin" type="date">
-            <column name="heurefin" />
-        </property>
-        <property name="statutSession" type="string">
-            <column name="statutsession" length="254" />
-        </property>
-    </class>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.memoire.model">
+ <class name="SessionVideoconference" table="sessionvideoconference">
+  <id name="idSession" type="int">
+   <column name="idSession"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="urlSession" type="string">
+   <column length="254" name="urlsession" not-null="true" unique="true"/>
+  </property>
+  <property generated="never" lazy="false" name="heureDebut" type="date">
+   <column name="heuredebut"/>
+  </property>
+  <property generated="never" lazy="false" name="heureFin" type="date">
+   <column name="heurefin"/>
+  </property>
+  <property generated="never" lazy="false" name="statutSession" type="string">
+   <column length="254" name="statutsession"/>
+  </property>
+ </class>
 </hibernate-mapping>

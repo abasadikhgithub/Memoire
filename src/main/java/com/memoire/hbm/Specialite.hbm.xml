@@ -1,16 +1,17 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping>
-    <class name="Specialite" table="specialite">
-        <id name="idSpecilite" type="int">
-            <column name="idspecilite" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="domaine" class="Domaine" fetch="select">
-            <column name="iddomaine" not-null="true" />
-        </many-to-one>
-        <property name="nom" type="string">
-            <column name="nom" length="254" />
-        </property>
-    </class>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.memoire.model">
+ <class name="Specialite" table="specialite">
+  <id name="idSpecilite" type="int">
+   <column name="idspecilite"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="Domaine" fetch="select" name="domaine">
+   <column name="iddomaine" not-null="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="nom" type="string">
+   <column length="254" name="nom"/>
+  </property>
+ </class>
 </hibernate-mapping>

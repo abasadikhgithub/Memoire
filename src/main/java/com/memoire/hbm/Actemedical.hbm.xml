@@ -10,7 +10,7 @@
             <column name="idfacture" not-null="true" />
         </many-to-one>
         <many-to-one name="patient" class="Patient" fetch="select">
-            <column name="idutilisateur" not-null="true" />
+            <column name="idutilisateur_patient" not-null="true" />
         </many-to-one>
         <property name="date" type="date">
             <column name="date" />
@@ -18,26 +18,24 @@
         <property name="type" type="string">
             <column name="type" length="254" />
         </property>
-        <union-subclass name="Analyse" table="Analyse">
-            <key column="idacte" />
+        <union-subclass name="Analyse" table="&quot;Analyse&quot;">
             <property name="numero" column="numero" />
             <property name="nom" column="nom" />
             <property name="description" column="description" />
             <property name="datePrescription" column="dateprescription" />
             <property name="dateRealisation" column="daterealisation" />
             <property name="urgence" column="urgence" />
-            <many-to-one name="laboratoire" class="laboratoire">
-                <column name="idLaboratoire" not-null="true" />
+            <many-to-one name="laboratoire" class="Laboratoire">
+                <column name="idlaboratoire" not-null="true" />
             </many-to-one>
             <many-to-one name="medecin" class="Medecin">
-                <column name="idutilisateur" not-null="true" />
+                <column name="idutilisateur_medecin" not-null="true" />
             </many-to-one>
             <many-to-one name="patientAnalyse" class="Patient">
-                <column name="pat_idutilisateur" not-null="true" />
+                <column name="idutilisateur_patientanalyse" not-null="true" />
             </many-to-one>
         </union-subclass>
         <union-subclass name="Consultation" table="consultation">
-            <key column="idacte" />
             <property name="dateHeure" column="dateheure" />
             <property name="notesMedecin" column="notesmedecin" />
             <many-to-one name="sessionVideoconference" class="SessionVideoconference">
@@ -47,7 +45,7 @@
                 <column name="idrendezvous" />
             </many-to-one>
             <many-to-one name="medecinConsultation" class="Medecin">
-                <column name="idutilisateur" />
+                <column name="idutilisateur_medecin_consultation" />
             </many-to-one>
         </union-subclass>
     </class>

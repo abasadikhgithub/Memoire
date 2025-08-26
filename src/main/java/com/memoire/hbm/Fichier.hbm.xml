@@ -1,22 +1,23 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping>
-    <class name="Fichier" table="fichier">
-        <id name="idFichier" type="int">
-            <column name="idfichier" />
-            <generator class="assigned" />
-        </id>
-        <property name="nomFichier" type="string">
-            <column name="nomfichier" length="254" />
-        </property>
-        <property name="urlFichier" type="string">
-            <column name="urlfichier" length="254" />
-        </property>
-        <property name="typeFichier" type="string">
-            <column name="typefichier" length="254" />
-        </property>
-        <property name="dateUpload" type="date">
-            <column name="dateupload" />
-        </property>
-    </class>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.memoire.model">
+ <class name="Fichier" table="fichier">
+  <id name="idFichier" type="int">
+   <column name="idfichier"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="nomFichier" type="string">
+   <column length="254" name="nomfichier"/>
+  </property>
+  <property generated="never" lazy="false" name="urlFichier" type="string">
+   <column length="254" name="urlfichier"/>
+  </property>
+  <property generated="never" lazy="false" name="typeFichier" type="string">
+   <column length="254" name="typefichier"/>
+  </property>
+  <property generated="never" lazy="false" name="dateUpload" type="date">
+   <column name="dateupload"/>
+  </property>
+ </class>
 </hibernate-mapping>

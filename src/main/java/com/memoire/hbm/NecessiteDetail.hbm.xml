@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping>
-    <class name="NecessiteDetail" table="necessitedetail">
-        <composite-id>
-            <key-property name="idDetail" column="iddetail" type="int"/>
-            <key-property name="idNecessite" column="idnecessite" type="int"/>
-        </composite-id>
-    </class>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.memoire.model">
+ <class name="NecessiteDetail" table="necessitedetail">
+  <composite-id mapped="false" unsaved-value="undefined">
+   <key-property column="iddetail" name="idDetail" type="int"/>
+   <key-property column="idnecessite" name="idNecessite" type="int"/>
+  </composite-id>
+ </class>
 </hibernate-mapping>

@@ -1,22 +1,23 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping>
-    <class name="Type" table="type">
-        <id name="idType" type="int">
-            <column name="idtype" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="structureSanitaire" class="StructureSanitaire" fetch="select">
-            <column name="idstructure" />
-        </many-to-one>
-        <property name="estPublic" type="boolean">
-            <column name="estpublic" />
-        </property>
-        <property name="nbrePrive" type="int">
-            <column name="nbreprive" />
-        </property>
-        <property name="nbrePublic" type="int">
-            <column name="nbrepublic" />
-        </property>
-    </class>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.memoire.model">
+ <class name="Type" table="type">
+  <id name="idType" type="int">
+   <column name="idtype"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="StructureSanitaire" fetch="select" name="structureSanitaire">
+   <column name="idstructure"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="estPublic" type="boolean">
+   <column name="estpublic"/>
+  </property>
+  <property generated="never" lazy="false" name="nbrePrive" type="int">
+   <column name="nbreprive"/>
+  </property>
+  <property generated="never" lazy="false" name="nbrePublic" type="int">
+   <column name="nbrepublic"/>
+  </property>
+ </class>
 </hibernate-mapping>

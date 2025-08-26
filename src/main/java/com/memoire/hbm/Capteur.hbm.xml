@@ -1,22 +1,23 @@
 <?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping>
-    <class name="Capteur" table="capteur">
-        <id name="idCapteur" type="int">
-            <column name="idcapteur" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="patient" class="Patient" fetch="select">
-            <column name="idutilisateur" not-null="true" />
-        </many-to-one>
-        <property name="typeCapteur" type="string">
-            <column name="typecapteur" length="254" />
-        </property>
-        <property name="modele" type="string">
-            <column name="modele" length="254" />
-        </property>
-        <property name="identifiantHardware" type="string">
-            <column name="identifianthardware" length="254" />
-        </property>
-    </class>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.memoire.model">
+ <class name="Capteur" table="capteur">
+  <id name="idCapteur" type="int">
+   <column name="idcapteur"/>
+   <generator class="assigned"/>
+  </id>
+  <many-to-one class="Patient" fetch="select" name="patient">
+   <column name="idutilisateur" not-null="true"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="typeCapteur" type="string">
+   <column length="254" name="typecapteur"/>
+  </property>
+  <property generated="never" lazy="false" name="modele" type="string">
+   <column length="254" name="modele"/>
+  </property>
+  <property generated="never" lazy="false" name="identifiantHardware" type="string">
+   <column length="254" name="identifianthardware"/>
+  </property>
+ </class>
 </hibernate-mapping>
