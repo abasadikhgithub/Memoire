@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.memoire.model.DonneeCapteur" table="donneecapteur">
+        <id name="id" type="int">
+            <column name="id"/>
+            <generator class="increment"/>
+        </id>
+        <many-to-one class="com.memoire.model.Capteur" fetch="select" name="capteur">
+            <column name="idcapteur" not-null="true"/>
+        </many-to-one>
+        <property name="valeur" type="big_decimal">
+            <column name="valeur" precision="10" scale="2"/>
+        </property>
+        <property name="dateReception" type="date">
+            <column name="datereception"/>
+        </property>
+    </class>
+</hibernate-mapping>

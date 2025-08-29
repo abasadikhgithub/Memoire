@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.memoire.model.ResultatAnalyse" table="resultatanalyse">
+        <id name="idResultat" type="int">
+            <column name="idresultat"/>
+            <generator class="increment"/>
+        </id>
+        <many-to-one class="com.memoire.model.Fichier" fetch="select" name="fichier">
+            <column name="idfichier" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="com.memoire.model.Analyse" fetch="select" name="analyse">
+            <column name="idacte" not-null="true"/>
+        </many-to-one>
+        <property name="interpretation" type="string">
+            <column length="254" name="interpretation"/>
+        </property>
+    </class>
+</hibernate-mapping>

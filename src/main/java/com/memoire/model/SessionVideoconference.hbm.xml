@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.memoire.model.SessionVideoconference" table="sessionvideoconference">
+        <id name="idSession" type="int">
+            <column name="idSession"/>
+            <generator class="increment"/>
+        </id>
+        <property name="urlSession" type="string">
+            <column length="254" name="urlsession" not-null="true" unique="true"/>
+        </property>
+        <property name="heureDebut" type="date">
+            <column name="heuredebut"/>
+        </property>
+        <property name="heureFin" type="date">
+            <column name="heurefin"/>
+        </property>
+        <property name="statutSession" type="string">
+            <column length="254" name="statutsession"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <f:metadata>
+        <f:viewAction action="#{loginBean.checkSession}" />
+    </f:metadata>
+
+    <ui:composition template="/templates/commonLayout.xhtml">
+        <ui:define name="content">
+            <h:panelGroup layout="block" styleClass="homepage-container">
+                <h:panelGroup layout="block" styleClass="hero-section">
+                    <h2>Bienvenue sur votre Plateforme de Télémédecine</h2>
+                    <p>Votre santé, à portée de clic. Consultez des professionnels de la santé, gérez vos rendez-vous et accédez à vos dossiers médicaux en toute sécurité.</p>
+                    <h:link styleClass="cta-button" outcome="/login" value="Se connecter" />
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" styleClass="features-section">
+                    <h3>Nos Services</h3>
+                    <div class="feature">
+                        <h4>Consultations Virtuelles</h4>
+                        <p>Prenez rendez-vous avec votre médecin depuis le confort de votre domicile.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Dossiers Médicaux Sécurisés</h4>
+                        <p>Accédez à l'historique de vos consultations et résultats d'analyses à tout moment.</p>
+                    </div>
+                    <div class="feature">
+                        <h4>Contact Facilité</h4>
+                        <p>Communiquez facilement avec votre médecin ou d'autres spécialistes de la santé.</p>
+                    </div>
+                </h:panelGroup>
+            </h:panelGroup>
+        </ui:define>
+    </ui:composition>
+</html>

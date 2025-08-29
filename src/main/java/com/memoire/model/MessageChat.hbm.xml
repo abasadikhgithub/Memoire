@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.memoire.model.MessageChat" table="messagechat">
+        <id name="idMessage" type="int">
+            <column name="idmessage"/>
+            <generator class="increment"/>
+        </id>
+        <many-to-one class="com.memoire.model.Medecin" fetch="select" name="medecin">
+            <column name="idutilisateur" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="com.memoire.model.Patient" fetch="select" name="patient">
+            <column name="pat_idutilisateur" not-null="true"/>
+        </many-to-one>
+        <property name="message" type="string">
+            <column length="254" name="message"/>
+        </property>
+        <property name="estLu" type="boolean">
+            <column name="estlu"/>
+        </property>
+    </class>
+</hibernate-mapping>

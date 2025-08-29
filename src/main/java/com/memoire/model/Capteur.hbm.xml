@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.memoire.model.Capteur" table="capteur">
+        <id name="idCapteur" type="int">
+            <column name="idcapteur"/>
+            <generator class="increment"/>
+        </id>
+        <many-to-one class="com.memoire.model.Patient" fetch="select" name="patient">
+            <column name="idutilisateur" not-null="true"/>
+        </many-to-one>
+        <property name="typeCapteur" type="string">
+            <column length="254" name="typecapteur"/>
+        </property>
+        <property name="modele" type="string">
+            <column length="254" name="modele"/>
+        </property>
+        <property name="identifiantHardware" type="string">
+            <column length="254" name="identifianthardware"/>
+        </property>
+    </class>
+</hibernate-mapping>

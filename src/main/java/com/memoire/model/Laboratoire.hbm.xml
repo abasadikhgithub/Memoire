@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.memoire.model.Laboratoire" table="laboratoire">
+        <id name="idLaboratoire" type="int">
+            <column name="idlaboratoire"/>
+            <generator class="increment"/>
+        </id>
+        <many-to-one class="com.memoire.model.StructureSanitaire" fetch="select" name="structureSanitaire">
+            <column name="idstructure"/>
+        </many-to-one>
+        <property name="fixe" type="int">
+            <column name="fixe"/>
+        </property>
+        <property name="localisationGPS" type="string">
+            <column length="254" name="localisationgps"/>
+        </property>
+        <property name="siteWeb" type="string">
+            <column length="254" name="siteweb"/>
+        </property>
+    </class>
+</hibernate-mapping>

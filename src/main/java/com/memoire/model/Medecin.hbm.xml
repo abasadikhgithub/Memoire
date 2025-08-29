@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <joined-subclass extends="com.memoire.model.Utilisateur" name="com.memoire.model.Medecin" table="Medecin">
+        <key>
+            <column name="idutilisateur" not-null="true"/>
+        </key>
+        <property name="numeroLicence" type="int">
+            <column name="numeroLicence"/>
+        </property>
+        <many-to-one class="com.memoire.model.StructureSanitaire" fetch="select" name="structureSanitaire">
+            <column name="idstructure"/>
+        </many-to-one>
+    </joined-subclass>
+</hibernate-mapping>

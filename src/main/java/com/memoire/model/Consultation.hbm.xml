@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <joined-subclass extends="com.memoire.model.ActeMedical" name="com.memoire.model.Consultation" table="consultation">
+        <key>
+            <column name="idacte" not-null="true"/>
+        </key>
+        <property name="dateHeure" type="java.sql.Timestamp">
+            <column name="dateheure"/>
+        </property>
+        <property name="notesMedecin" type="java.lang.String">
+            <column name="notesmedecin"/>
+        </property>
+        <many-to-one class="com.memoire.model.SessionVideoconference" fetch="select" name="sessionVideoconference">
+            <column name="idsession"/>
+        </many-to-one>
+        <many-to-one class="com.memoire.model.RendezVous" fetch="select" name="rendezVous">
+            <column name="idrendezvous"/>
+        </many-to-one>
+        <many-to-one class="com.memoire.model.Medecin" fetch="select" name="medecinConsultation">
+            <column name="idutilisateur_medecin_consultation"/>
+        </many-to-one>
+    </joined-subclass>
+</hibernate-mapping>

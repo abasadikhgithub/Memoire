@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.memoire.model.ActeMedical" table="actemedical">
+        <id name="idActe" type="int">
+            <column name="idacte"/>
+            <generator class="increment"/>
+        </id>
+        <many-to-one class="com.memoire.model.Facture" fetch="select" name="facture">
+            <column name="idfacture" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="com.memoire.model.Patient" fetch="select" name="patient">
+            <column name="idutilisateur_patient" not-null="true"/>
+        </many-to-one>
+        <property name="date" type="date">
+            <column name="date"/>
+        </property>
+        <property name="type" type="string">
+            <column length="254" name="type"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.memoire.model.Utilisateur" table="utilisateur">
+        <id name="idUtilisateur" type="int">
+            <column name="idutilisateur"/>
+            <generator class="increment"/>
+        </id>
+        <property name="nomUtilisateur" type="string">
+            <column length="254" name="nomutilisateur"/>
+        </property>
+        <property name="motDePasse" type="string">
+            <column length="254" name="motdepasse"/>
+        </property>
+        <property name="email" type="string">
+            <column length="254" name="email"/>
+        </property>
+        <property name="telephone" type="string">
+            <column length="254" name="telephone"/>
+        </property>
+        <property name="adresse" type="string">
+            <column length="254" name="adresse"/>
+        </property>
+        <property name="dateCreation" type="date">
+            <column name="datecreation"/>
+        </property>
+        <property name="derniereConnexion" type="date">
+            <column name="derniereconnexion"/>
+        </property>
+        <property name="estActif" type="boolean">
+            <column name="estactif"/>
+        </property>
+        <property name="photo" type="string">
+            <column length="254" name="photo"/>
+        </property>
+        <property name="estAdmin" type="boolean">
+            <column name="estadmin" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

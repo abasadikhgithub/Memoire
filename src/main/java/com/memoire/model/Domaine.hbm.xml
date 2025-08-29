@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.memoire.model.Domaine" table="domaine">
+        <id name="idDomaine" type="int">
+            <column name="iddomaine"/>
+            <generator class="increment"/>
+        </id>
+        <property name="famille" type="string">
+            <column length="254" name="famille"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.memoire.model.StructureSanitaire" table="structuresanitaire">
+        <id name="idStructure" type="int">
+            <column name="idstructure"/>
+            <generator class="increment"/>
+        </id>
+        <many-to-one class="com.memoire.model.Nature" fetch="select" name="nature">
+            <column name="idnature" not-null="true"/>
+        </many-to-one>
+        <many-to-one class="com.memoire.model.AgentEtat" fetch="select" name="agentEtat">
+            <column name="idutilisateur" not-null="true"/>
+        </many-to-one>
+        <property name="nom" type="string">
+            <column length="254" name="nom"/>
+        </property>
+        <property name="adresse" type="string">
+            <column length="254" name="adresse"/>
+        </property>
+        <property name="telephone" type="long">
+            <column name="telephone"/>
+        </property>
+        <property name="email" type="string">
+            <column length="254" name="email"/>
+        </property>
+    </class>
+</hibernate-mapping>

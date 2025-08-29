@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Inscription Patient</title>
+</h:head>
+<h:body>
+    <p:card style="width: 50%; margin: 20px auto;">
+        <f:facet name="title">Inscription Patient</f:facet>
+        <h:form enctype="multipart/form-data">
+            <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+            
+            <p:panelGrid columns="2" layout="grid" style="width: 100%;">
+                
+                <p:outputLabel for="nom" value="Nom d'utilisateur:" />
+                <p:inputText id="nom" value="#{patientBean.patient.nomUtilisateur}" required="true" />
+                
+                <p:outputLabel for="password" value="Mot de passe:" />
+                <p:password id="password" value="#{patientBean.patient.motDePasse}" required="true" />
+
+                <p:outputLabel for="email" value="Email:" />
+                <p:inputText id="email" value="#{patientBean.patient.email}" required="true" />
+
+                <p:outputLabel for="telephone" value="Téléphone:" />
+                <p:inputText id="telephone" value="#{patientBean.patient.telephone}" />
+
+                <p:outputLabel for="adresse" value="Adresse:" />
+                <p:inputText id="adresse" value="#{patientBean.patient.adresse}" />
+                
+                <p:outputLabel for="dateNaissance" value="Date de naissance:" />
+                <p:calendar id="dateNaissance" value="#{patientBean.patient.dateNaissance}" pattern="dd/MM/yyyy" required="true" />
+
+                <p:outputLabel for="photo" value="Photo de profil:" />
+                <p:fileUpload id="photo" value="#{patientBean.uploadedFile}" mode="simple" required="true" />
+
+            </p:panelGrid>
+
+            <p:commandButton value="S'inscrire" action="#{patientBean.inscrirePatient()}" ajax="false" style="margin-top: 10px;" />
+            
+        </h:form>
+    </p:card>
+</h:body>
+</html>

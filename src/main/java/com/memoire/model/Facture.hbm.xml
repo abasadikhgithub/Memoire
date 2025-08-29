@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.memoire.model.Facture" table="facture">
+        <id name="idFacture" type="int">
+            <column name="idfacture"/>
+            <generator class="increment"/>
+        </id>
+        <property name="montant" type="int">
+            <column name="montant"/>
+        </property>
+        <property name="statut" type="string">
+            <column length="254" name="statut"/>
+        </property>
+        <property name="dateEmission" type="date">
+            <column name="dateemission"/>
+        </property>
+    </class>
+</hibernate-mapping>

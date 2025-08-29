@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 27 août 2025, 15:04:07 by Hibernate Tools 6.5.1.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.memoire.model.ServiceStructure" table="servicestructure">
+        <composite-id>
+            <key-property name="idService" type="int">
+                <column name="idservice"/>
+            </key-property>
+            <key-property name="idStructure" type="int">
+                <column name="idstructure"/>
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

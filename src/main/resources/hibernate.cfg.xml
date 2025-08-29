@@ -8,40 +8,46 @@
         <property name="hibernate.connection.password">sadih221</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Telemedecin</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.hbm2ddl.auto">validate </property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="hibernate.search.autoregister_listeners">true</property>
 		<property name="hibernate.validator.apply_to_ddl">false</property>
 		<property name="hibernate.current_session_context_class">thread</property>
 		
         
-        <!-- Mapping -->
-        <mapping resource="com/memoire/hbm/Capteur.hbm.xml" />
-        <mapping resource="com/memoire/hbm/ContactPatient.hbm.xml" />
-        <mapping resource="com/memoire/hbm/DetailPrescription.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Domaine.hbm.xml" />
-        <mapping resource="com/memoire/hbm/DonneeCapteur.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Facture.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Fichier.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Laboratoire.hbm.xml" />
-        <mapping resource="com/memoire/hbm/MessageChat.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Nature.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Necessite.hbm.xml" />
-        <mapping resource="com/memoire/hbm/NecessiteDetail.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Notification.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Permission.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Prescription.hbm.xml" />
-        <mapping resource="com/memoire/hbm/RendezVous.hbm.xml" />
-        <mapping resource="com/memoire/hbm/ResultatAnalyse.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Role.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Service.hbm.xml" />
-        <mapping resource="com/memoire/hbm/ServiceStructure.hbm.xml" />
-        <mapping resource="com/memoire/hbm/SessionVideoconference.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Specialite.hbm.xml" />
-        <mapping resource="com/memoire/hbm/SpecialiteMedecin.hbm.xml" />
-        <mapping resource="com/memoire/hbm/StructureSanitaire.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Type.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Utilisateur.hbm.xml" />
-        <mapping resource="com/memoire/hbm/Actemedical.hbm.xml" />
+        <!-- Mapping -->  
+        <mapping resource="com/memoire/model/AgentEtat.hbm.xml" />
+        <mapping resource="com/memoire/model/Analyse.hbm.xml" />
+        <mapping resource="com/memoire/model/Contact.hbm.xml" />
+        <mapping resource="com/memoire/model/Medecin.hbm.xml" />
+        <mapping resource="com/memoire/model/Patient.hbm.xml" />
+        <mapping resource="com/memoire/model/Consultation.hbm.xml" />
+        
+        <mapping resource="com/memoire/model/Capteur.hbm.xml" />
+        <mapping resource="com/memoire/model/ContactPatient.hbm.xml" />
+        <mapping resource="com/memoire/model/DetailPrescription.hbm.xml" />
+        <mapping resource="com/memoire/model/Domaine.hbm.xml" />
+        <mapping resource="com/memoire/model/DonneeCapteur.hbm.xml" />
+        <mapping resource="com/memoire/model/Facture.hbm.xml" />
+        <mapping resource="com/memoire/model/Fichier.hbm.xml" />
+        <mapping resource="com/memoire/model/Laboratoire.hbm.xml" />
+        <mapping resource="com/memoire/model/MessageChat.hbm.xml" />
+        <mapping resource="com/memoire/model/Nature.hbm.xml" />
+        <mapping resource="com/memoire/model/Necessite.hbm.xml" />
+        <mapping resource="com/memoire/model/NecessiteDetail.hbm.xml" />
+        <mapping resource="com/memoire/model/Notification.hbm.xml" />
+        <mapping resource="com/memoire/model/Permission.hbm.xml" />
+        <mapping resource="com/memoire/model/Prescription.hbm.xml" />
+        <mapping resource="com/memoire/model/RendezVous.hbm.xml" />
+        <mapping resource="com/memoire/model/ResultatAnalyse.hbm.xml" />
+        <mapping resource="com/memoire/model/Role.hbm.xml" />
+        <mapping resource="com/memoire/model/Service.hbm.xml" />
+        <mapping resource="com/memoire/model/ServiceStructure.hbm.xml" />
+        <mapping resource="com/memoire/model/SessionVideoconference.hbm.xml" />
+        <mapping resource="com/memoire/model/Specialite.hbm.xml" />
+        <mapping resource="com/memoire/model/SpecialiteMedecin.hbm.xml" />
+        <mapping resource="com/memoire/model/StructureSanitaire.hbm.xml" />
+        <mapping resource="com/memoire/model/Type.hbm.xml" />
+        <mapping resource="com/memoire/model/Utilisateur.hbm.xml" />
+        <mapping resource="com/memoire/model/ActeMedical.hbm.xml" />
     </session-factory>
 </hibernate-configuration>
