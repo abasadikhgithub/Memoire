@@ -23,7 +23,7 @@ public class LoginService {
         Utilisateur utilisateur = utilisateurDAO.findByNomUtilisateur(nomUtilisateur);
 
         // 2. Vérifier si l'utilisateur existe et si le mot de passe correspond
-        if (utilisateur != null && BCrypt.checkpw(motDePasse, utilisateur.getMotDePasse())) {
+        if (utilisateur != null && BCrypt.checkpw(motDePasse, utilisateur.getMotDePasse()) && utilisateur.isEstActif()) {
             return utilisateur; // Connexion réussie
         }
 

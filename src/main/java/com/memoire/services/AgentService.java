@@ -7,6 +7,7 @@ import jakarta.inject.Inject;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.Date;
+import java.util.List;
 
 @ApplicationScoped
 public class AgentService {
@@ -15,17 +16,24 @@ public class AgentService {
     private AgentEtatDAO agentEtatDAO;
 
     public void enregistrerAgent(AgentEtat agent) {
-        // Hachage du mot de passe
         String motDePasseHache = BCrypt.hashpw(agent.getMotDePasse(), BCrypt.gensalt());
         agent.setMotDePasse(motDePasseHache);
-
-        // Définition des valeurs par défaut 
         Long d = System.currentTimeMillis();
         agent.setDateCreation(new Date(d));
         agent.setEstActif(true);
-        agent.setEstAdmin(false); // S'assurer que les agents ne sont pas des admins par défaut
-
-        // Enregistrement de l'agent via le DAO
+        agent.setEstAdmin(false);
         agentEtatDAO.save(agent);
+    }
+    
+    public List<AgentEtat> findAll() {
+        return agentEtatDAO.findAll();
+    }
+    
+    public void update(AgentEtat agent) {
+        agentEtatDAO.update(agent);
+    }
+    
+    public void delete(AgentEtat agent) {
+        agentEtatDAO.delete(agent);
     }
 }

@@ -1,21 +1,208 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:body>
+	<ui:composition template="/templates/adminLayout.xhtml">
+		<ui:define name="content">
+			<p:card title="Gestion des Agents d'État">
+				<h:form id="agentForm">
+					<p:growl id="messages" showDetail="true" />
 
-	<!-- 
-		Replace path to template, title, header and body
-		with actual data.
-	 -->
-	<ui:composition template="/templates/commonLayout.xhtml">
-			<ui:define name="pageTitle">Title</ui:define>
-			<ui:define name="pageHeader">Header</ui:define>
-			<ui:define name="body">
-				<form jsfc="h:form" id="Form">
-				
-				</form>
-			</ui:define>
+					<div class="d-flex justify-content-between align-items-center mb-3">
+						<p:commandButton value="Ajouter un agent" icon="pi pi-plus"
+							oncomplete="PF('manageAgentDialog').show()"
+							action="#{gererAgentsBean.prepareNewAgent()}"
+							update="manage-agent-dialog" />
+
+						<div style="display: flex; align-items: center;">
+<!-- 							<p:commandButton value="Exporter" icon="pi pi-download" -->
+<!-- 								styleClass="ui-button-raised ui-button-secondary me-2" -->
+<!-- 								ajax="false"> -->
+<!-- 								<p:dataExporter type="pdf" target="agentTable" -->
+<!-- 									fileName="liste_agents" encoding="ISO-8859-1"/> -->
+<!-- 							</p:commandButton> -->
+
+<p:splitButton value="Exporter" icon="pi pi-download"
+    styleClass="ui-button-raised ui-button-secondary me-2"
+    ajax="false">
+    <p:menuitem value="PDF" icon="pi pi-file-pdf" ajax="false">
+        <p:dataExporter type="pdf" target="agentTable"
+            fileName="liste_agents" encoding="ISO-8859-1"/>
+    </p:menuitem>
+    <p:menuitem value="CSV" icon="pi pi-file" ajax="false">
+        <p:dataExporter type="csv" target="agentTable"
+            fileName="liste_agents" encoding="ISO-8859-1"/>
+    </p:menuitem>
+</p:splitButton>
+
+							<p:inputText id="filtreGlobal" placeholder="Rechercher..."
+								value="#{gererAgentsBean.filtreGlobal}"
+								style="width: 250px; border-radius: 5px 0 0 5px;">
+								<p:ajax event="keyup" process="@this" update="agentTable" />
+							</p:inputText>
+							<p:button icon="pi pi-search" style="border-radius: 0 5px 5px 0;" />
+						</div>
+					</div>
+
+					<p:dataTable style="width: 100%;" id="agentTable" var="agent"
+						value="#{gererAgentsBean.agentsFiltres}"
+						widgetVar="agentTableWidget" reflow="true"
+						emptyMessage="Aucun agent trouvé.">
+
+						<p:column headerText="Nom d'utilisateur"
+							sortBy="#{agent.nomUtilisateur}"
+							filterBy="#{agent.nomUtilisateur}" filterMatchMode="contains">
+							<h:outputText value="#{agent.nomUtilisateur}" />
+						</p:column>
+
+						<p:column headerText="Email" sortBy="#{agent.email}"
+							filterBy="#{agent.email}" filterMatchMode="contains">
+							<h:outputText value="#{agent.email}" />
+						</p:column>
+
+						<p:column headerText="Téléphone" visible="false">
+							<h:outputText value="#{agent.telephone}" />
+						</p:column>
+
+						<p:column headerText="Adresse" visible="false">
+							<h:outputText value="#{agent.adresse}" />
+						</p:column>
+
+						<p:column headerText="Statut" sortBy="#{agent.estActif}"
+							filterBy="#{agent.estActif}">
+							<h:outputText value="#{agent.estActif ? 'Actif' : 'Bloqué'}"
+								style="color: #{agent.estActif ? 'green' : 'red'};" />
+						</p:column>
+
+						<p:column headerText="Actions" style="text-align: center;"
+							exportable="false">
+							<p:commandButton icon="pi pi-pencil" title="Modifier"
+								action="#{gererAgentsBean.prepareModifierAgent()}"
+								oncomplete="PF('manageAgentDialog').show()"
+								update="manage-agent-dialog">
+								<f:setPropertyActionListener value="#{agent}"
+									target="#{gererAgentsBean.agentSelectionne}" />
+							</p:commandButton>
+
+							<p:commandButton icon="pi pi-info-circle" title="Infos"
+								oncomplete="PF('infoDialog').show()" update="info-dialog"
+								styleClass="ui-button-warning">
+								<f:setPropertyActionListener value="#{agent}"
+									target="#{gererAgentsBean.agentSelectionne}" />
+							</p:commandButton>
+
+							<p:commandButton icon="pi pi-trash" title="Supprimer"
+								action="#{gererAgentsBean.supprimerAgent()}" update="@form"
+								styleClass="ui-button-danger">
+								<f:setPropertyActionListener value="#{agent}"
+									target="#{gererAgentsBean.agentSelectionne}" />
+								<p:confirm header="Suppression"
+									message="Voulez-vous vraiment supprimer cet agent ?"
+									icon="pi pi-exclamation-triangle" />
+							</p:commandButton>
+
+							<p:commandButton icon="pi pi-lock" title="Bloquer"
+								rendered="#{agent.estActif}"
+								action="#{gererAgentsBean.bloquerAgent()}" update="@form"
+								styleClass="ui-button-success">
+								<f:setPropertyActionListener value="#{agent}"
+									target="#{gererAgentsBean.agentSelectionne}" />
+							</p:commandButton>
+							<p:commandButton icon="pi pi-lock-open" title="Débloquer"
+								rendered="#{!agent.estActif}"
+								action="#{gererAgentsBean.debloquerAgent()}" update="@form"
+								styleClass="ui-button-danger">
+								<f:setPropertyActionListener value="#{agent}"
+									target="#{gererAgentsBean.agentSelectionne}" />
+							</p:commandButton>
+							<p:commandButton icon="pi pi-envelope" title="Notifier par email"
+								action="#{gererAgentsBean.notifierParEmail()}" update="@form"
+								styleClass="ui-button-info">
+								<f:setPropertyActionListener value="#{agent}"
+									target="#{gererAgentsBean.agentSelectionne}" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+
+				</h:form>
+			</p:card>
+
+			<p:dialog header="Gestion de l'agent" widgetVar="manageAgentDialog"
+				modal="true" showEffect="fade" hideEffect="fade" responsive="true">
+				<p:outputPanel id="manage-agent-dialog" class="ui-fluid">
+					<h:form>
+						<p:panelGrid columns="2" layout="grid">
+							<p:outputLabel for="nomUtilisateur" value="Nom d'utilisateur:" />
+							<p:inputText id="nomUtilisateur"
+								value="#{gererAgentsBean.agent.nomUtilisateur}" required="true" />
+
+							<p:outputLabel for="email" value="Email:" />
+							<p:inputText id="email" value="#{gererAgentsBean.agent.email}"
+								required="true" />
+
+							<p:outputLabel for="telephone" value="Téléphone:" />
+							<p:inputText id="telephone"
+								value="#{gererAgentsBean.agent.telephone}" />
+
+							<p:outputLabel for="adresse" value="Adresse:" />
+							<p:inputText id="adresse"
+								value="#{gererAgentsBean.agent.adresse}" />
+
+							<p:outputLabel for="departement" value="Département:" />
+							<p:inputText id="departement"
+								value="#{gererAgentsBean.agent.departement}" />
+						</p:panelGrid>
+
+						<p:commandButton value="Enregistrer"
+							action="#{gererAgentsBean.saveAgent()}"
+							oncomplete="if (!args.validationFailed) PF('manageAgentDialog').hide()"
+							update=":agentForm:agentTable :agentForm:messages" />
+						<p:commandButton value="Annuler"
+							onclick="PF('manageAgentDialog').hide()" type="button" />
+					</h:form>
+				</p:outputPanel>
+			</p:dialog>
+
+			<p:dialog header="Informations de l'agent" widgetVar="infoDialog"
+				modal="true" showEffect="fade" hideEffect="fade" responsive="true">
+				<p:outputPanel id="info-dialog" class="ui-fluid">
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputText value="Nom d'utilisateur:" />
+						<h:outputText
+							value="#{gererAgentsBean.agentSelectionne.nomUtilisateur}" />
+
+						<h:outputText value="Email:" />
+						<h:outputText value="#{gererAgentsBean.agentSelectionne.email}" />
+
+						<h:outputText value="Téléphone:" />
+						<h:outputText
+							value="#{gererAgentsBean.agentSelectionne.telephone}" />
+
+						<h:outputText value="Adresse:" />
+						<h:outputText value="#{gererAgentsBean.agentSelectionne.adresse}" />
+
+						<h:outputText value="Statut:" />
+						<h:outputText
+							value="#{gererAgentsBean.agentSelectionne.estActif ? 'Actif' : 'Bloqué'}" />
+
+						<h:outputText value="Date Création:" />
+						<h:outputText
+							value="#{gererAgentsBean.agentSelectionne.dateCreation}" />
+					</h:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+				responsive="true" width="350">
+				<p:commandButton value="Non" type="button"
+					styleClass="ui-confirmdialog-no ui-button-flat" />
+				<p:commandButton value="Oui" type="button"
+					styleClass="ui-confirmdialog-yes" />
+			</p:confirmDialog>
+		</ui:define>
 	</ui:composition>
-
+</h:body>
 </html>

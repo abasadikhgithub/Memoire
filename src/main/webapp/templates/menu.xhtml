@@ -1,12 +1,53 @@
 <!DOCTYPE html>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <nav>
-        <ul>
-            <li><h:link outcome="/public/index" value="Accueil" /></li>
-            <li><h:link outcome="/login" value="Connexion" /></li>
-            <li><h:link outcome="/patient/inscriptionPatient" value="Inscription" /></li>
-            </ul>
-    </nav>
-</ui:composition>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions">
+<h:head>
+	<title>Menu</title>
+	<style>
+		.profile-initials {
+			width: 30px;
+			height: 30px;
+			background-color: #007bff;
+			color: white;
+			font-size: 16px;
+			font-weight: bold;
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 50%;
+			margin-right: 10px;
+		}
+	</style>
+</h:head>
+<h:body>
+	<h:form>
+		<p:menubar>
+			<p:menuitem value="Accueil" outcome="/public/index.xhtml" icon="pi pi-home" />
+
+			<p:menuitem value="Connexion" outcome="/login.xhtml" icon="pi pi-sign-in"
+				rendered="#{not loginBean.userLoggedIn}" />
+			<p:menuitem value="Inscription" outcome="/patient/inscriptionPatient.xhtml"
+				icon="pi pi-user-plus" rendered="#{not loginBean.userLoggedIn}" />
+
+			<p:submenu label="Profil" rendered="#{loginBean.userLoggedIn}">
+				<f:facet name="icon">
+					<h:graphicImage library="images" name="profile_pic.png"
+						rendered="#{loginBean.utilisateurConnecte.photo != null}"
+						styleClass="rounded-circle" />
+					<h:outputText
+						value="#{fn:substring(loginBean.utilisateurConnecte.nomUtilisateur, 0, 1)}"
+						rendered="#{loginBean.utilisateurConnecte.photo == null}"
+						styleClass="profile-initials" />
+				</f:facet>
+				<p:menuitem value="Tableau de bord" icon="pi pi-th-large" outcome="#{loginBean.getDashboardOutcome()}" />
+				<p:menuitem value="Mon Profil" icon="pi pi-id-card" outcome="/common/profil.xhtml" />
+				<p:menuitem value="Déconnexion" action="#{loginBean.logout()}" icon="pi pi-power-off" />
+			</p:submenu>
+		</p:menubar>
+	</h:form>
+</h:body>
+</html>

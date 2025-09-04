@@ -8,7 +8,7 @@
         <property name="hibernate.connection.password">sadih221</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/Telemedecin</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
 		<property name="hibernate.search.autoregister_listeners">true</property>
 		<property name="hibernate.validator.apply_to_ddl">false</property>
 		<property name="hibernate.current_session_context_class">thread</property>
